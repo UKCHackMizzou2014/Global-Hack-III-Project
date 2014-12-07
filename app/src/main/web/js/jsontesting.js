@@ -1,6 +1,5 @@
 $(document).on("click","#b1",function(){
 	$("p").css( "background-color", "blue" );
-	Sensi.Thermostat.server.setCool(Sensi.ICDID, 60, 'F');
 	$("code").html(JSON.stringify(Tschedule), null, "\t");
 	
 	
