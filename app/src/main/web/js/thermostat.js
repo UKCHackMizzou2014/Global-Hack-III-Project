@@ -7,7 +7,7 @@
  * https://github.com/SignalR/SignalR/blob/master/LICENSE.md
  *
  */
-
+var Tschedule = null;
 //<reference path="jquery-1.9.1.js" />
 //<reference path="jquery.signalR.js" />
 //<reference path="config.js" />
