@@ -1,19 +1,23 @@
 package iii.hack.global.herndon.j.sensiapp;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.webkit.WebView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     private WebView webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         webview = (WebView)findViewById(R.id.webView);
         webview.getSettings().setJavaScriptEnabled(true);
