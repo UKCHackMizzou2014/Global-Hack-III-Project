@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data1 = google.visualization.arrayToDataTable([
+        ['number', 'Nothing', 'Loss', 'Saving', 'Normal'
+         , { role: 'annotation' } ],
+        [1, 9, 3, 3, 12, 'hello'],
+        [2, 8, 2, 2, 10, ''],
+		[3, 11, 4, 4, 15, ''],
+		[4, 8, 2, 2, 10, ''],
+		[5, 8, 2, 2, 10, ''],
+		[6, 8, 2, 2, 10, ''],
+		[7, 8, 2, 2, 10, ''],
+		[8, 8, 2, 2, 10, '']
+      ]);
+        var options = {
+        width: 700,
+        height: 500,
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+		seriesType: "bars",
+		series: {
+		3: {
+		type: "line"
+		}
+		},
+		colors: ['white', 'red', 'green', 'blue'],
+		lineWidth: 4
+      };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        chart.draw(data1, options);
+	
+
+	//chart.draw(data, google.charts.Bar.convertOptions(options));
+
+    google.visualization.events.addListener(chart, 'select', chartselectHandler);
+
+    function chartselectHandler() {
+		console.log(chart.getSelection());
+    }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
