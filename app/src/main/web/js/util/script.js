@@ -1,3 +1,0 @@
-$(".selector").navbar({
-	defaults: true
-});
