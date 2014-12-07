@@ -1,23 +1,33 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(draw);
-	  
       function draw() {
+		var index = 0;
 		// 1 degree
         var data1 = google.visualization.arrayToDataTable([
-        ['number', 'Nothing', 'Loss', 'Saving', 'Normal'
+        ['number', 'Nothing', 'Saving', 'Loss', 'Normal'
          , { role: 'annotation' } ],
         [1, 9, 3, 3, 12, ''],
         [2, 8, 2, 2, 10, ''],
 		[3, 11, 4, 4, 15, ''],
 		[4, 8, 2, 2, 10, ''],
-		[5, 8, 2, 2, 10, ''],
+		[5, 8, 4, 2, 10, ''],
 		[6, 8, 2, 2, 10, ''],
-		[7, 8, 2, 2, 10, ''],
-		[8, 8, 2, 2, 10, '']
+		[7, 8, 4, 2, 10, ''],
+		[8, 8, 2, 2, 10, ''],
+		[9, 8, 2, 2, 10, ''],
+		[10, 8, 4, 2, 10, ''],
+		[11, 8, 2, 2, 10, ''],
+		[12, 8, 2, 2, 10, ''],
+		[13, 8, 4, 2, 10, ''],
+		[14, 8, 2, 2, 10, '']
       ]);
 		//2 degree
 		var data2 = google.visualization.arrayToDataTable([
-        ['number', 'Nothing', 'Loss', 'Saving', 'Normal'
+        ['number', 'Nothing', 'Saving', 'Loss', 'Normal'
          , { role: 'annotation' } ],
         [1, 9, 5, 5, 14, ''],
         [2, 8, 4, 4, 12, ''],
@@ -34,25 +44,29 @@
     data[1] = data2;
 	//option for the graph
         var options = {
+		tooltip: {
+			isHtml: true,
+			trigger: 'both'
+		},
 		title: '1 Degree Difference Graph',
-        width: 700,
+        width: 900,
         height: 500,
         legend: { position: 'top', maxLines: 3 },
-        bar: { groupWidth: '75%' },
+        bar: { groupWidth: '60%' },
         isStacked: true,
 		seriesType: "bars",
 		//colors: ['white', 'red', 'green', '#76A7FA'],
 		series: {
 		0: {color: 'transparent', visibleInLegend: false},
-		1: {color: 'red', opacity: 0.1},
-		2: {color: 'green', opacity: 0.1},
+		1: {color: 'green', opacity: 0.1},
+		2: {color: 'red', opacity: 0.1},
 		3: {color: '#76A7FA', type: "line"},
 		},
-		
 		lineWidth: 4,
-		hAxis: {viewWindow: {min:0, max:8.5}},
+        vAxis: {title: 'Cost ($)'},
+		hAxis: {title: 'Hour', viewWindow: {min:0, max:8.5}},
 		animation:{
-        duration: 1000,
+        duration: 600,
         easing: 'out'
       }
       };
@@ -83,8 +97,7 @@
 		  
       options['title'] = (current+1) + ' Degree Difference Graph';
 	  chart.draw(data[current], options);
-	  //alert("Max: " + data[current].getColumnRange(2).max);
-		//alert("Min: " + data[current].getColumnRange(2).min);
+	  
 	  }
 	drawChart();
 	//add listener to graph
@@ -113,13 +126,34 @@
 	
 	//action for max button
     gotoMaxButton.onclick = function() {
+	 if (zoomed) {zoomed = !zoomed;}
 	 var maxVal = data[current].getColumnRange(2).max;
-      options.hAxis.viewWindow.min = maxVal - 4;
-      options.hAxis.viewWindow.max = maxVal + 4.5;
-      drawChart();
-	  chart.setSelection([{row:2}]);
+     gotoMax(maxVal);
     }
 	
+	function gotoMax(value) {
+		console.log("last " + index);
+		var rows = data[current].getNumberOfRows();
+		for (var i = index; i < rows; ++i){
+			 if (data[current].getValue(i, 2) == value) {
+				index = (i+1)%(rows);
+				options.hAxis.viewWindow.min = i - 4;
+				options.hAxis.viewWindow.max = i + 4.5;
+				drawChart();
+			    //wait 1s before highlighting the column
+				function getColumn(i) {
+					chart.setSelection([{row:i,column:2}]);
+				}
+				setTimeout(getColumn(i), 900)
+				break;
+			}	
+			//if at the end, update the value of index to 1
+			if (i == (rows - 1)){
+				index = (i+1)%(rows);
+			}
+		}
+		
+	}
 	//action for zoom button
     var zoomed = false;
     changeZoomButton.onclick = function() {
@@ -134,4 +168,16 @@
       drawChart();
     }
 
-}
+      }
+    </script>
+  </head>
+  <body>
+    <p><input type="submit" id="prev" value="Previous"/>
+	<input type="submit" id="next" value="Next"/>
+	<input type="submit" id="zoom" value="Zoom"/></p>
+	<p><input type="submit" id="maxVal" value="Max Saving"/></p>
+   	<p><input type="submit" id="b1" value="Switch Graph"/></p>
+	
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
