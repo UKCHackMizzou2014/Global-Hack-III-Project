@@ -1,0 +1,4 @@
+Kc-isia-mysql1d.kc.umkc.edu
+atn4z7
+WwGliAyf3
+http://sce2.umkc.edu/BIT/burrise/cs349/lessons/JDBC/mysql.exe
