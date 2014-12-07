@@ -16,10 +16,6 @@ $(document).on("click","#b1",function(){
 	Sensi.Thermostat.server.setScheduleActive(Sensi.ICDID,
 								Tschedule.ObjectId);
 	
-	
-	
-	
-	
 	Sensi.Thermostat.server.setCool(Sensi.ICDID, num, 'F');
 	
 	
@@ -28,3 +24,17 @@ $(document).on("click","#b1",function(){
 	console.log(Tschedule);	//cool
 
 });
+
+//button2
+$(document).on("click","#b2",function(){
+
+	InfoSlideIn(messageOne);
+})
+
+
+function InfoSlideIn(message)
+{
+	console.log(message);
+	$('#infotext').text(message);
+	$('#infopanel').panel("open");
+}

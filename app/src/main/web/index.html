@@ -22,8 +22,49 @@
 </head>
 <body> 
 
-<div data-role="page">
+<div data-role="page" id="welcomePage">
 
+	<div data-role="header">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#welcomePage">Home</a></li>
+				<li><a href="graphView">Live View</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div data-role="content">	
+		<p>Hello world</p>
+
+
+		<div data-role="panel" id="infopanel">
+			<p id="infotext"></p>
+		</div>
+		
+		<code>
+			<pre>
+				asdfasdfasdf </br>
+				asdfasdfasdasdfasdfasdf
+			</pre>
+		</code>	
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="graphView">
+
+	<div data-role="header">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#welcomePage">Home</a></li>
+				<li><a href="graphView">Live View</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div data-role="content">
     <p>
 		<input type="submit" id="prev" value="Previous"/>
 		<input type="submit" id="next" value="Next"/>
@@ -38,42 +79,8 @@
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
  
 	<button id="b1" type="button">Click Me!</button>
+</div>
 	
-	<div data-role="navbar">
-		<ul>
-			<li><a href="https://wwww.google.com">google</a></li>
-			<li><a href="yahoo.com">yahoo</a><li>
-		</ul>
-	</div>
-
-	<div data-role="content">	
-		<p>Hello world</p>
-		<ul data-role="listview" data-inset="true" data-filter="true">
-			<li><a href="#">Acura</a></li>
-			<li><a href="#">Audi</a></li>
-			<li><a href="#">BMW</a></li>
-			<li><a href="#">Cadillac</a></li>
-			<li><a href="#">Ferrari</a></li>
-		</ul>
-
-		<div data-role="page">
-			<div data-role="panel" id="infopanel">
-				<p id="infotext"></p>
-			</div>
-		</div>
-		
-		<code>
-			<pre>
-				asdfasdfasdf </br>
-				asdfasdfasdasdfasdfasdf
-			</pre>
-		</code>	
-	</div><!-- /content -->
-
-</div><!-- /page -->
-
-<div data-role="page">
-<p> good bye world </p>
 </div>
 
 </body>
