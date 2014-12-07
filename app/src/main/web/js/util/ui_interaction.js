@@ -32,7 +32,7 @@ $(document).on("click","#b1",function(){
 //button2
 $(document).on("click","#trial",function(){
 
-	InfoSlideIn("Lorem ipsum dolor sit amet,
+	InfoSlideIn("Lorem ipsum dolor sit amet
 	 consectetur adipiscing elit, sed do eiusmod 
 	 tempor incididunt ut labore et dolore magna 
 	 aliqua.");
