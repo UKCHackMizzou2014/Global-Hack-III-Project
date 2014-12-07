@@ -16,3 +16,40 @@ http://sce2.umkc.edu/BIT/burrise/cs349/lessons/JDBC/mysql.exe
 		for (var i = 0; i < MAX; ++i) {
 			data.addRow([i+1, Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()]);
 		}
+
+
+var data1 = google.visualization.arrayToDataTable([
+		['number', 'Nothing', 'Saving', 'Loss', 'Normal', { role: 'annotation' } ],
+		[1, 9, 3, 3, 12, ''],
+		[2, 8, 2, 2, 10, ''],
+		[3, 11, 4, 4, 15, ''],
+		[4, 8, 2, 2, 10, ''],
+		[5, 8, 4, 4, 12, ''],
+		[6, 8, 2, 2, 10, ''],
+		[7, 8, 4, 4, 12, ''],
+		[8, 8, 2, 2, 10, ''],
+		[9, 8, 2, 2, 10, ''],
+		[10, 8, 4, 4, 12, ''],
+		[11, 8, 2, 2, 10, ''],
+		[12, 8, 2, 2, 10, ''],
+		[13, 8, 4, 4, 12, ''],
+		[14, 8, 2, 2, 10, '']
+	]);
+	//2 degree
+	var data2 = google.visualization.arrayToDataTable([
+		['number', 'Nothing', 'Saving', 'Loss', 'Normal', { role: 'annotation' } ],
+		[1, 9, 5, 5, 14, ''],
+		[2, 8, 4, 4, 12, ''],
+		[3, 11, 6, 6, 17, ''],
+		[4, 8, 4, 4, 12, ''],
+		[5, 8, 4, 4, 12, ''],
+		[6, 8, 4, 4, 12, ''],
+		[7, 8, 4, 4, 12, ''],
+		[8, 8, 4, 4, 12, ''],
+		[9, 8, 4, 4, 12, ''],
+		[10, 8, 4, 4, 12, ''],
+		[11, 8, 4, 4, 12, ''],
+		[12, 8, 4, 4, 12, ''],
+		[13, 8, 4, 4, 12, ''],
+		[14, 8, 4, 4, 12, '']
+	]);
