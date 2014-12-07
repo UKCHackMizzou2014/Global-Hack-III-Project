@@ -1,5 +1,6 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(draw);
+	  
       function draw() {
 		// 1 degree
         var data1 = google.visualization.arrayToDataTable([
