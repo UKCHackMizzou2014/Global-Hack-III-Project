@@ -9,15 +9,15 @@ function draw() {
 		[2, 8, 2, 2, 10, ''],
 		[3, 11, 4, 4, 15, ''],
 		[4, 8, 2, 2, 10, ''],
-		[5, 8, 4, 2, 10, ''],
+		[5, 8, 4, 4, 12, ''],
 		[6, 8, 2, 2, 10, ''],
-		[7, 8, 4, 2, 10, ''],
+		[7, 8, 4, 4, 12, ''],
 		[8, 8, 2, 2, 10, ''],
 		[9, 8, 2, 2, 10, ''],
-		[10, 8, 4, 2, 10, ''],
+		[10, 8, 4, 4, 12, ''],
 		[11, 8, 2, 2, 10, ''],
 		[12, 8, 2, 2, 10, ''],
-		[13, 8, 4, 2, 10, ''],
+		[13, 8, 4, 4, 12, ''],
 		[14, 8, 2, 2, 10, '']
 	]);
 	//2 degree
@@ -27,7 +27,7 @@ function draw() {
 		[2, 8, 4, 4, 12, ''],
 		[3, 11, 6, 6, 17, ''],
 		[4, 8, 4, 4, 12, ''],
-		[5, 8, 4, 4, 12, ''],
+		[5, 8, 4, 4, 12, ''], 
 		[6, 8, 4, 4, 12, ''],
 		[7, 8, 4, 4, 12, ''],
 		[8, 8, 4, 4, 12, '']
@@ -72,7 +72,9 @@ function draw() {
 	var nextButton = document.getElementById('next');
 	var changeZoomButton = document.getElementById('zoom');
 	var gotoMaxButton = document.getElementById('maxVal');
-
+	var incButton = document.getElementById('increment');
+	var decButton = document.getElementById('decrement');
+	
 	function drawChart() {
 	// Disabling the button while the chart is drawing.
 	button.disabled = true;   
@@ -98,8 +100,69 @@ function draw() {
 	google.visualization.events.addListener(chart, 'select', chartselectHandler);
 
 	function chartselectHandler() {
-	console.log(chart.getSelection());
+		console.log(chart.getSelection());
 	}
+	
+	//action for increment button
+	incButton.onclick = function() {
+		try{
+			var items = chart.getSelection();
+			if (items[0].column == 4 || items[0].column == 2){ //only consider the normal points
+			    //decrement the current value by current degree
+				var currentValue = data[current].getValue(items[0].row,4);
+				var newValue = currentValue + (current+1);
+				//edit normal line
+				data[current].setValue(items[0].row,4, newValue);
+				//recalculate loss/saving, assume +-6% per degree for now
+				var currentSave = data[current].getValue(items[0].row,2);
+				var currentLoss = data[current].getValue(items[0].row,3);
+				var newSave = (newValue/100)*6;
+				var newLoss = (newValue/100)*6;
+				var newNothing = newValue - newSave;
+				//set new values
+				data[current].setValue(items[0].row,1, newNothing);
+				data[current].setValue(items[0].row,2, newSave);
+				data[current].setValue(items[0].row,3, newLoss);
+				//redraw chart
+				drawChart();
+			}
+		}
+		catch(err) {
+			alert("You haven't selected anything!");
+		}
+	}
+	
+	//action for decrement button
+	decButton.onclick = function() {
+		try{
+			var items = chart.getSelection();
+			if (items[0].column == 4 || items[0].column == 2){ //only consider the normal points
+			    //decrement the current value by current degree
+				var currentValue = data[current].getValue(items[0].row,4);
+				if (currentValue != 0){ //if == 0 then nothing to do
+					var newValue = currentValue - (current+1);
+					//edit normal line
+					data[current].setValue(items[0].row,4, newValue);
+					//recalculate loss/saving, assume +-6% per degree for now
+					var currentSave = data[current].getValue(items[0].row,2);
+					var currentLoss = data[current].getValue(items[0].row,3);
+					var newSave = (newValue/100)*6;
+					var newLoss = (newValue/100)*6;
+					var newNothing = newValue - newSave;
+					//set new values
+					data[current].setValue(items[0].row,1, newNothing);
+					data[current].setValue(items[0].row,2, newSave);
+					data[current].setValue(items[0].row,3, newLoss);
+					//redraw chart
+					drawChart();
+				}
+			}
+		}
+		catch(err) {
+			alert("You haven't selected anything!");
+		}
+	}
+	
 	//action for switch button
 	button.onclick = function() {
 	current = 1 - current;
