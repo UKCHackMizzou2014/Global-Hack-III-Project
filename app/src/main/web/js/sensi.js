@@ -4,9 +4,9 @@ var Sensi = Sensi || {};
 Sensi.Hub = $.connection.hub;         
 Sensi.Thermostat = $.connection.thermostat;
 
-Sensi.UserName = "andrew.kutta@emerson.com";
-Sensi.Password = "Emerson1";
-Sensi.ICDID = "36-6f-92-ff-fe-00-0a-59";
+Sensi.UserName = "team6@globalhack.com";
+Sensi.Password = "globalhack";
+Sensi.ICDID = "36-6f-92-ff-fe-01-3c-b8";
 
 // End Points
 Sensi.AuthorizeEndpoint = Sensi.Config.Api + 'authorize';
@@ -58,6 +58,16 @@ Sensi.StartSignalR = function() {
 
 	Sensi.Thermostat.client.online = function(icd,model) {
 		Sensi.log("Online");
+		Tschedule = model.Schedule.Schedules;
+		if(Tschedule[0].Name == "Cool"){
+			Tschedule = Tschedule[0];
+		}else if(Tschedule[1].Name == "Cool"){
+			Tschedule = Tschedule[1];
+		}else {
+			Tschedule = Tschedule[2];
+		}
+		Sensi.log(Tschedule);
+			
 	}
 	
 	Sensi.Thermostat.client.update = function (icd, model) {

@@ -7,21 +7,21 @@ $(document).on("click","#b1",function(){
 	//reset temps
 	// 	    cool.weekend.6:00.temp.unit
 	var num = Math.floor((Math.random() * 10) + 70);
-	Tschedule[0].Daily[1].Steps[0].Cool.F = num;
-	Tschedule[0].Daily[1].Steps[0].Cool.C = Math.floor((num-32)*5/9);
+	Tschedule.Daily[1].Steps[0].Cool.F = num;
+	Tschedule.Daily[1].Steps[0].Cool.C = Math.floor((num-32)*5/9);
 	console.log(num);
 	//send new schedule
 	Sensi.Thermostat.server.saveSchedule(Sensi.ICDID,
-											Tschedule[0]);
+											Tschedule);
 	//set new schedule to use
 	Sensi.Thermostat.server.setScheduleActive(Sensi.ICDID,
-								Tschedule[0].ObjectId);
+								Tschedule.ObjectId);
 	
 	
 	
 	
 	
-	//Sensi.Thermostat.server.setCool(Sensi.ICDID, 60, 'F');
+	Sensi.Thermostat.server.setCool(Sensi.ICDID, num, 'F');
 	
 	
 	
