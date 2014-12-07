@@ -58,6 +58,7 @@ Sensi.StartSignalR = function() {
 
 	Sensi.Thermostat.client.online = function(icd,model) {
 		Sensi.log("Online");
+		tickle=model;
 		Tschedule = model.Schedule.Schedules;
 		if(Tschedule[0].Name == "Cool"){
 			Tschedule = Tschedule[0];

@@ -1,6 +1,6 @@
 $(document).on("click","#b1",function(){
 	$("p").css( "background-color", "blue" );
-	$("code").html(JSON.stringify(Tschedule), null, "\t");
+	$("code").html(JSON.stringify(tickle), null, "\t");
 	
 	
 	//reset temps

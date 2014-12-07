@@ -8,6 +8,7 @@
  *
  */
 var Tschedule = null;
+var tickle = null;
 //<reference path="jquery-1.9.1.js" />
 //<reference path="jquery.signalR.js" />
 //<reference path="config.js" />
