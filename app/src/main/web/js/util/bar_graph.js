@@ -3,7 +3,7 @@ google.setOnLoadCallback(draw);
 function draw() {
 	var index = 0;
 	// 1 degree
-	hours[0],hours[0]
+	//hours[0],hours[0]
 	var data1 = google.visualization.arrayToDataTable([
 		['number', 'Nothing', 'Saving', 'Loss', 'Normal', { role: 'annotation' } ],
 		[1, 9, 3, 3, 12, ''],
@@ -231,5 +231,4 @@ function draw() {
 	zoomed = !zoomed;
 	drawChart();
 	}
-
 }
