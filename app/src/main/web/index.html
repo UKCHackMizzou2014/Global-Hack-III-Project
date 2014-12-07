@@ -5,65 +5,84 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Hello Android</title>
 	<link rel="stylesheet" href="js/jq/jquery.mobile-1.4.5.css" type="text/javascript" />
-	
+
 	<!-- jquery, google -->
 	<script src="js/jq/jquery-2.1.1.js" type="text/javascript"></script>
 	<script src="js/jq/jquery.mobile-1.4.5.js"  type="text/javascript"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	
 	<!-- thermo stuff -->
 	<script src="js/therm/jquery.signalR-1.1.3.js" type="text/javascript"  ></script>
-	<script src="js/therm/config.js" type="text/javascript"  ></script>
+	<script src="js/therm/config.js" type="text/javascript"></script>
 	<script src="js/therm/thermostat.js" type="text/javascript"  ></script>
 	<script src="js/therm/sensi.js" type="text/javascript"></script>
-	
+
 	<!-- general includes -->
 	<script src="js/util/ui_interaction.js" type="text/javascript"></script>
 	<script src="js/util/bar_graph.js" type="text/javascript"></script>
 </head>
 <body> 
 
-<div data-role="page" id="welcomePage">
+	<div ng-app="" data-role="page" id="welcomePage">
 
-	<div data-role="header">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#welcomePage">Home</a></li>
-				<li><a href="#graphView">Live View</a></li>
-			</ul>
+		<div data-role="header">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#welcomePage">Home</a></li>
+					<li><a href="#graphView">Live View</a></li>
+				</ul>
+			</div>
 		</div>
-	</div>
 
 
 
-	<div data-role="content">	
-		<p>Hello world</p>
+		<div data-role="content">	
+			<p>Hello world</p>
 
 
-		<div data-role="panel" id="infopanel">
-			<p id="infotext"></p>
+			<div data-role="panel" id="infopanel">
+				<p id="infotext"></p>
+			</div>
+			
+			<code>
+				<pre>
+					asdfasdfasdf </br>
+					asdfasdfasdasdfasdfasdf
+				</pre>
+			</code>	
+		</div><!-- /content -->
+
+	</div><!-- /page -->
+	<div data-role="page" id="graphView">
+
+		<div data-role="header">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#welcomePage">Home</a></li>
+					<li><a href="#graphView">Live View</a></li>
+				</ul>
+			</div>
 		</div>
 		
-		<code>
-			<pre>
-				asdfasdfasdf </br>
-				asdfasdfasdasdfasdfasdf
-			</pre>
-		</code>	
-	</div><!-- /content -->
-
-</div><!-- /page -->
-
-<div data-role="page" id="graphView">
-
-	<div data-role="header">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#welcomePage">Home</a></li>
-				<li><a href="#graphView">Live View</a></li>
-			</ul>
+		<div data-role="content">
+			<p>
+				<input type="submit" id="prev" value="Previous"/>
+				<input type="submit" id="next" value="Next"/>
+				<input type="submit" id="zoom" value="Zoom"/>
+			</p>
+			<p>
+				<input type="submit" id="maxVal" value="Max Saving/Loss"/>
+			</p>
+			<p>
+				<input type="submit" id="b1" value="Switch Graph"/>
+			</p>
+			<div id="chart_div" style="width: 900px; height: 500px;"></div>
+		 
+			<button id="b1" type="button">Click Me!</button>
 		</div>
 	</div>
+<<<<<<< HEAD
 	
 	<div data-role="content">
 
@@ -85,6 +104,8 @@
 	<button id="b1" type="button">Click Me!</button>	
 </div><!--/content-->
 </div>
+=======
+>>>>>>> e23340fc1a130adceac37ad2d8eb8aeb517dd593
 
 </body>
 </html>											
