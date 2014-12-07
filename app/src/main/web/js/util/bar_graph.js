@@ -1,7 +1,3 @@
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(draw);
       function draw() {
@@ -169,15 +165,3 @@
     }
 
       }
-    </script>
-  </head>
-  <body>
-    <p><input type="submit" id="prev" value="Previous"/>
-	<input type="submit" id="next" value="Next"/>
-	<input type="submit" id="zoom" value="Zoom"/></p>
-	<p><input type="submit" id="maxVal" value="Max Saving"/></p>
-   	<p><input type="submit" id="b1" value="Switch Graph"/></p>
-	
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-  </body>
-</html>
