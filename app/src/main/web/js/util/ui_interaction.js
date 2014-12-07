@@ -29,19 +29,6 @@ $(document).on("click","#b1",function(){
 
 });
 
-//button2
-$(document).on("click","#trial",function(){
-
-	InfoSlideIn("Lorem ipsum dolor sit amet,
-	 consectetur adipiscing elit, sed do eiusmod 
-	 tempor incididunt ut labore et dolore magna 
-	 aliqua.");
-})
-
-//submit a message to slide in
-function InfoSlideIn(message)
-{
-	console.log(message);
-	$('#infotext').text(message);
-	$('#infopanel').panel("open");
-}
+$(document).ready(function(){
+	$('#simple-menu').sidr();
+});
